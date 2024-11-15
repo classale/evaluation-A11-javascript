@@ -1,0 +1,26 @@
+name: Running Testinette using Vitest
+on:
+  push:
+    branches: [main]
+jobs:
+  run-testinette:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/ghcr.io/edenschoolfrance/exam_a1-1javascript:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
+      ports:
+        - 80
+      volumes:
+        - ${{ github.workspace }}:/app/testinette
+      options: --cpus 1
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Remove optional export keyword
+        run: sed -i 's/export function/function/g' /app/testinette/*
+      - name: Add export keyword
+        run: sed -i 's/function/export function/g' /app/testinette/*
+      - name: Running testinette
+        run: cd /app && npm run test
