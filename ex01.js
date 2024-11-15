@@ -1,7 +1,7 @@
 // ex01.js
 
 function greetings(firstname) {
-    return `Bienvenue,${firstname == "" ? " " : firstname}${firstname} !`;
+    return `Bienvenue, ${firstname} !`;
 }
 
 console.log(greetings("")); // Résultat attendu: "Bienvenue, !"
