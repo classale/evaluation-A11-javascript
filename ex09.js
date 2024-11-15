@@ -9,7 +9,7 @@ function encodeRot8(password) {
     for(let letter of password) {
         let isLowerCase = letter == letter.toLowerCase();
         let i = alphabet.indexOf(letter.toLowerCase());
-        i = (i + 8) % 24;
+        i = (i + 8) % 26;
         out += isLowerCase ? alphabet[i] : alphabet[i].toUpperCase();
     }
     return out;
@@ -20,7 +20,7 @@ function encodeRot16(password) {
     for(let letter of password) {
         let isLowerCase = letter == letter.toLowerCase();
         let i = alphabet.indexOf(letter.toLowerCase());
-        i = (i + 16) % 24;
+        i = (i + 16) % 26;
         out += isLowerCase ? alphabet[i] : alphabet[i].toUpperCase();
     }
     return out;
